@@ -1,9 +1,10 @@
 FROM gitpod/workspace-full
 
-# Install Flutter
-RUN git clone https://github.com/flutter/flutter.git /opt/flutter \
-  && echo 'export PATH="/opt/flutter/bin:$PATH"' >> /etc/profile \
-  && flutter precache
+USER gitpod
 
-ENV PATH="/opt/flutter/bin:$PATH"
-RUN flutter doctor
+# Install Flutter
+RUN git clone https://github.com/flutter/flutter.git /home/gitpod/flutter \
+  && echo 'export PATH="$PATH:/home/gitpod/flutter/bin"' >> /home/gitpod/.bashrc \
+  && /home/gitpod/flutter/bin/flutter precache
+
+ENV PATH="$PATH:/home/gitpod/flutter/bin"
