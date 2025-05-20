@@ -2,11 +2,11 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
-  - name: Init Flutter
-    init: |
+  - init: |
+      export PATH="$PATH:/home/gitpod/flutter/bin"
       flutter config --enable-web
       flutter doctor
-    command: echo "Ready. Run your flutter commands."
+    command: cd nannyphone_app && flutter run -d web-server --web-port=8080 --web-hostname=0.0.0.0
 
 ports:
   - port: 8080
