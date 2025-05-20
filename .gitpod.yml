@@ -1,0 +1,13 @@
+image:
+  file: .gitpod.Dockerfile
+
+tasks:
+  - name: Init Flutter
+    init: |
+      flutter config --enable-web
+      flutter doctor
+    command: echo "Ready. Run your flutter commands."
+
+ports:
+  - port: 8080
+    onOpen: open-preview
